@@ -1,0 +1,24 @@
+# Spring boot application
+spring:
+  application:
+    name: dubbo-consumer-demo
+server:
+  port: 8081
+management:
+  port: 8082
+
+# Service Version
+demo:
+  service:
+    version: 1.0.0
+
+# Dubbo Config properties
+## ApplicationConfig Bean
+dubbo:
+  application:
+    id: dubbo-consumer-demo
+    name: dubbo-consumer-demo
+  protocol:
+    id: dubbo
+    name: dubbo
+    port: 20880

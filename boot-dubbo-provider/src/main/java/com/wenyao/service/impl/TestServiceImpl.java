@@ -1,6 +1,7 @@
 package com.wenyao.service.impl;
 
 import com.alibaba.dubbo.config.annotation.Service;
+import com.wenyao.domain.RpcResult;
 import com.wenyao.entity.User;
 import com.wenyao.mapper.UserMapper;
 import com.wenyao.service.TestService;
@@ -26,7 +27,10 @@ public class TestServiceImpl implements TestService {
     }
 
     @Override
-    public User select() {
-        return userMapper.select1();
+    public RpcResult<User> select() {
+        User user = userMapper.select1();
+        RpcResult<User> result = new RpcResult<>();
+        result.setObj(user);
+        return result;
     }
 }

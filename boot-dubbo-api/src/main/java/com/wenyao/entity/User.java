@@ -6,12 +6,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.io.Serializable;
 import java.util.Date;
 
 @Data
 @Entity
 @Table(name="t_user")
-public class User {
+public class User implements Serializable{
 
     @Id
     @GeneratedValue(generator="JDBC")

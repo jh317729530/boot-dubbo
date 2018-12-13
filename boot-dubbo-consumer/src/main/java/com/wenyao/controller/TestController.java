@@ -1,6 +1,7 @@
 package com.wenyao.controller;
 
 import com.alibaba.dubbo.config.annotation.Reference;
+import com.wenyao.entity.User;
 import com.wenyao.service.TestService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,4 +20,11 @@ public class TestController {
     public String sayHello(@RequestParam String name) {
         return testService.sayHello(name);
     }
+
+//    @RequestMapping("getUser")
+//    public String getUser() {
+//        User user = testService.select();
+//        System.out.println(user.getName());
+//        return user.getHeadImgUrl();
+//    }
 }

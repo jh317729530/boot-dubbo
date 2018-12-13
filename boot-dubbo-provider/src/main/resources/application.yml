@@ -2,10 +2,26 @@
 spring:
   application:
     name: dubbo-provider-demo
+  datasource:
+    name: so
+    url: jdbc:mysql://data-tt.curato.cn:3306/so-dev?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    username: so
+    password: leihou888;
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+
 server:
   port: 9090
+
 management:
   port: 9091
+
+mybatis :
+  mapper-locations : classpath:com/wenyao/mapper/xml/*.xml
+  type-aliases-package : com.wenyao.entity
+  configuration :
+    mapUnderscoreToCamelCase : true
+    map-underscore-to-camel-case : true
 
 # Service version
 demo:

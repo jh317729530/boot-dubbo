@@ -1,6 +1,8 @@
 package com.wenyao.controller;
 
 import com.alibaba.dubbo.config.annotation.Reference;
+import com.alibaba.dubbo.rpc.RpcContext;
+import com.wenyao.annontation.Pagination;
 import com.wenyao.domain.RpcResult;
 import com.wenyao.entity.User;
 import com.wenyao.service.TestService;
@@ -8,7 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class TestController {
@@ -31,11 +35,18 @@ public class TestController {
         return result.getObj().getHeadImgUrl();
     }
 
+    @Pagination
     @RequestMapping("getAllUser")
-    public RpcResult<List<User>> getAllUser(Integer pageNo, Integer rows) {
+    public RpcResult<List<User>> getAllUser() {
         User user = new User();
-        user.setPage(pageNo);
-        user.setRows(rows);
+//        user.setPage(pageNo);
+//        user.setRows(rows);
+//        // 测试隐式传参
+//        Map<String, String> attachements = new HashMap<>();
+//        attachements.put("isPagination", "true");
+//        attachements.put("pageNo", pageNo.toString());
+//        attachements.put("pageSize", rows.toString());
+//        RpcContext.getContext().setAttachments(attachements);
         return testService.selectAll(user);
     }
 }

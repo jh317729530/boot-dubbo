@@ -13,6 +13,18 @@ spring:
 server:
   port: 9090
 
+#mappers
+mapper :
+  mappers :
+  not-empty : false
+  identity : MYSQL
+
+pagehelper :
+  helperDialect : mysql
+  reasonable : true
+  supportMethodsArguments : true
+  params : count=countSql
+
 management:
   port: 9091
 

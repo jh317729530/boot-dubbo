@@ -12,6 +12,7 @@
         <module>boot-dubbo-api</module>
         <module>boot-dubbo-consumer</module>
         <module>boot-dubbo-provider</module>
+        <module>boot-dubbo-common</module>
     </modules>
 
     <parent>
@@ -114,6 +115,25 @@
                 <artifactId>lombok</artifactId>
                 <version>1.16.20</version>
                 <scope>provided</scope>
+            </dependency>
+
+            <!--pagehelper -->
+            <dependency>
+                <groupId>com.github.pagehelper</groupId>
+                <artifactId>pagehelper-spring-boot-starter</artifactId>
+                <version>1.2.10</version>
+            </dependency>
+
+            <dependency>
+                <groupId>tk.mybatis</groupId>
+                <artifactId>mapper-spring-boot-starter</artifactId>
+                <version>1.2.4</version>
+            </dependency>
+
+            <dependency>
+                <groupId>javax.persistence</groupId>
+                <artifactId>persistence-api</artifactId>
+                <version>1.0</version>
             </dependency>
 
 

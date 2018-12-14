@@ -1,6 +1,7 @@
 package com.wenyao.service.impl;
 
 import com.alibaba.dubbo.config.annotation.Service;
+import com.alibaba.dubbo.rpc.RpcContext;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.wenyao.domain.RpcResult;
@@ -10,6 +11,7 @@ import com.wenyao.service.TestService;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
 
 
 @Service(
@@ -39,9 +41,9 @@ public class TestServiceImpl implements TestService {
 
     @Override
     public RpcResult<List<User>> selectAll(User user) {
-        if (user.getPage() != null && user.getRows() != null) {
-            PageHelper.startPage(user.getPage(), user.getRows());
-        }
+
+        Map<String, String> attachments = RpcContext.getContext().getAttachments();
+
         RpcResult<List<User>> result = new RpcResult<>();
         result.setObj(userMapper.selectAll());
         return result;

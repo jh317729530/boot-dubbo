@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 public class TestController {
 
@@ -27,5 +29,13 @@ public class TestController {
         RpcResult<User> result = testService.select();
         System.out.println(result.getObj().getName());
         return result.getObj().getHeadImgUrl();
+    }
+
+    @RequestMapping("getAllUser")
+    public RpcResult<List<User>> getAllUser(Integer pageNo, Integer rows) {
+        User user = new User();
+        user.setPage(pageNo);
+        user.setRows(rows);
+        return testService.selectAll(user);
     }
 }

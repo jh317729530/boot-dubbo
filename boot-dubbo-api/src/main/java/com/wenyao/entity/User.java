@@ -1,5 +1,6 @@
 package com.wenyao.entity;
 
+import com.wenyao.base.BaseEntity;
 import lombok.Data;
 
 import javax.persistence.Entity;
@@ -12,7 +13,7 @@ import java.util.Date;
 @Data
 @Entity
 @Table(name="t_user")
-public class User implements Serializable{
+public class User extends BaseEntity implements Serializable{
 
     @Id
     @GeneratedValue(generator="JDBC")

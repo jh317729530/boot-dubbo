@@ -32,7 +32,7 @@ public class PageAspect {
         if ("true".equalsIgnoreCase(attachments.get("isPagination"))) {
             int pageNo = null == attachments.get("pageNo") ? PageConst.PAGE_NO : Integer.valueOf(attachments.get("pageNo"));
             int pageSize = null == attachments.get("pageSize") ? PageConst.PAGE_SIZE : Integer.valueOf(attachments.get("pageSize"));
-            PageHelper.startPage(pageNo, pageSize);
+            PageHelper.startPage(pageNo, pageSize, true, false, null);
         }
     }
 }

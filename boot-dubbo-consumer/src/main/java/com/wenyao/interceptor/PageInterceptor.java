@@ -1,21 +1,39 @@
 package com.wenyao.interceptor;
 
 import com.alibaba.dubbo.rpc.RpcContext;
+import com.github.pagehelper.Page;
 import com.wenyao.annontation.Pagination;
 import com.wenyao.constant.PageConst;
+import com.wenyao.utils.PageUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Map;
+import java.util.Set;
 
+/**
+ * 分页拦截器
+ * @author ganjunhui
+ */
 @Slf4j
 @Component
 public class PageInterceptor implements HandlerInterceptor {
 
+    /**
+     * 判断请求的hanler是否有分页注解，有就设置RpcContext隐式传参
+     * @param request
+     * @param response
+     * @param handler
+     * @return
+     * @throws Exception
+     */
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
@@ -26,6 +44,41 @@ public class PageInterceptor implements HandlerInterceptor {
             context.setAttachment("pageSize", getPageSize(request).toString());
         }
         return true;
+    }
+
+    @Override
+    public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
+
+        if (!getIsCancel()) {
+
+            if (null != modelAndView) {
+                ModelMap modelMap = modelAndView.getModelMap();
+                Set<Map.Entry<String, Object>> set = modelMap.entrySet();
+                for (Map.Entry<String, Object> entry : set) {
+                    Object value = entry.getValue();
+                    if (value instanceof Page) {
+                        String key = entry.getKey();
+                        Page page = (Page)value;
+                        modelMap.put(key, PageUtil.page2page(page));
+                    }
+                }
+            } else {
+
+            }
+        }
+    }
+
+    /**
+     * 判断是否取消分页
+     * @return
+     */
+    private boolean getIsCancel() {
+        RpcContext context = RpcContext.getContext();
+        String isPagination = context.getAttachment("isPagination");
+        if (StringUtils.isNotBlank(isPagination) && "true".equalsIgnoreCase(isPagination)) {
+            return true;
+        }
+        return false;
     }
 
     /**

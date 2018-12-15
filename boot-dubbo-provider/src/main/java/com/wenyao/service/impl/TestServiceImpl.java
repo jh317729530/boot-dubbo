@@ -45,7 +45,8 @@ public class TestServiceImpl implements TestService {
 //        Map<String, String> attachments = RpcContext.getContext().getAttachments();
 
         RpcResult<Page<User>> result = new RpcResult<>();
-        result.setObj(userMapper.pageBy());
+        Page<User> users = userMapper.pageBy();
+        result.setObj(users);
         return result;
     }
 }

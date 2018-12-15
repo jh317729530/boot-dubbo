@@ -24,3 +24,5 @@ dubbo:
     port: 20880
   consumer:
     timeout: 5000
+  registry:
+    address: multicast://224.5.6.7:1234

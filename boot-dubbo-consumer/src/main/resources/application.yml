@@ -22,3 +22,5 @@ dubbo:
     id: dubbo
     name: dubbo
     port: 20880
+  consumer:
+    timeout: 5000

@@ -53,6 +53,6 @@ dubbo:
     port: 20880
   registry:
     id: my-registry
-    address: N/A
+    address: multicast://224.5.6.7:1234
   provider:
     timeout: 5000

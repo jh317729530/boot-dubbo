@@ -12,7 +12,6 @@
         <module>boot-dubbo-api</module>
         <module>boot-dubbo-consumer</module>
         <module>boot-dubbo-provider</module>
-        <module>boot-dubbo-common</module>
     </modules>
 
     <parent>

@@ -19,12 +19,13 @@ public class TestController {
 
 
     @Reference(version = "${demo.service.version}",
-            application = "${dubbo.application.id}",
-            url = "dubbo://localhost:20880")
+            application = "${dubbo.application.id}")
     private TestService testService;
 
     @RequestMapping("/sayHello")
     public String sayHello(@RequestParam String name) {
+        RpcContext context = RpcContext.getContext();
+//        boolean consumerSide = context.isConsumerSide();
         return testService.sayHello(name);
     }
 

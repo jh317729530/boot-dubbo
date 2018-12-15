@@ -22,6 +22,10 @@
         SELECT * FROM t_user WHERE id = 10
     </select>
 
+    <select id="pageBy" resultMap="BaseResultMap">
+        SELECT * FROM t_user
+    </select>
+
 </mapper>
 
 

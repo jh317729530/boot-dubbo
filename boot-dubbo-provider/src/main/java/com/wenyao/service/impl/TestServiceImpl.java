@@ -40,12 +40,12 @@ public class TestServiceImpl implements TestService {
     }
 
     @Override
-    public RpcResult<List<User>> selectAll(User user) {
+    public RpcResult<Page<User>> selectAll(User user) {
 
-        Map<String, String> attachments = RpcContext.getContext().getAttachments();
+//        Map<String, String> attachments = RpcContext.getContext().getAttachments();
 
-        RpcResult<List<User>> result = new RpcResult<>();
-        result.setObj(userMapper.selectAll());
+        RpcResult<Page<User>> result = new RpcResult<>();
+        result.setObj(userMapper.pageBy());
         return result;
     }
 }

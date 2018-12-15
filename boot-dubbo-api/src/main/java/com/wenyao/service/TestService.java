@@ -1,5 +1,6 @@
 package com.wenyao.service;
 
+import com.github.pagehelper.Page;
 import com.wenyao.domain.RpcResult;
 import com.wenyao.entity.User;
 
@@ -11,5 +12,5 @@ public interface TestService {
 
     RpcResult<User> select();
 
-    RpcResult<List<User>> selectAll(User user);
+    RpcResult<Page<User>> selectAll(User user);
 }

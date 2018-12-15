@@ -2,6 +2,7 @@ package com.wenyao.controller;
 
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.alibaba.dubbo.rpc.RpcContext;
+import com.github.pagehelper.Page;
 import com.wenyao.annontation.Pagination;
 import com.wenyao.domain.RpcResult;
 import com.wenyao.entity.User;
@@ -38,7 +39,7 @@ public class TestController {
 
     @Pagination
     @RequestMapping("getAllUser")
-    public RpcResult<List<User>> getAllUser() {
+    public RpcResult<Page<User>> getAllUser() {
         User user = new User();
 //        user.setPage(pageNo);
 //        user.setRows(rows);

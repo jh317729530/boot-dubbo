@@ -4,19 +4,29 @@ import com.alibaba.dubbo.rpc.RpcContext;
 import com.github.pagehelper.PageHelper;
 import com.wenyao.constant.PageConst;
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.springframework.stereotype.Component;
 
 import java.util.Map;
 
+/**
+ * 分页切面
+ */
 @Aspect
 @Component
-public class ServiceImplAspect {
+public class PageAspect {
 
+    /**
+     * 分页切面 mapper包中，所有返回com.github.pagehelper.Page 对象的接口均使用此切面进行分页
+     * @param joinPoint
+     * @return
+     */
+    @Before("execution (com.github.pagehelper.Page com.wenyao.mapper.*.*(..))")
+    public void around(JoinPoint joinPoint) {
 
-    @Before("execution(* com.wenyao.service.impl.*.*(..))")
-    public void setPage(JoinPoint joinPoint) {
         RpcContext context = RpcContext.getContext();
         Map<String, String> attachments = context.getAttachments();
         if ("true".equalsIgnoreCase(attachments.get("isPagination"))) {

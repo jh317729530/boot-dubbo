@@ -8,7 +8,7 @@ import java.util.List;
 public class Page<T> {
 
 
-        private int pageNum;
+        private int pageNo;
         /**
          * 页面大小
          */

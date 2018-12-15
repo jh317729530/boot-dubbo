@@ -46,6 +46,7 @@ public class TestServiceImpl implements TestService {
 
         RpcResult<Page<User>> result = new RpcResult<>();
         Page<User> users = userMapper.pageBy();
+        int pageNum = users.getPageNum();
         result.setObj(users);
         return result;
     }

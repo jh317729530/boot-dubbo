@@ -49,6 +49,9 @@ public class TestController {
 //        attachements.put("pageNo", pageNo.toString());
 //        attachements.put("pageSize", rows.toString());
 //        RpcContext.getContext().setAttachments(attachements);
-        return testService.selectAll(user);
+        RpcResult<Page<User>> pageRpcResult = testService.selectAll(user);
+        Page<User> obj = pageRpcResult.getObj();
+        int pageNum = obj.getPageNum();
+        return pageRpcResult;
     }
 }

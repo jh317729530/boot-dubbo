@@ -6,7 +6,7 @@ public class PageUtil {
 
     public static <T> com.wenyao.domain.Page<T> page2page(Page<T> page) {
         com.wenyao.domain.Page<T> p = new com.wenyao.domain.Page<>();
-        p.setPageNum(page.getPageNum());
+        p.setPageNo(page.getPageNum());
         p.setPageSize(page.getPageSize());
         p.setStartRow(page.getStartRow());
         p.setEndRow(page.getEndRow());

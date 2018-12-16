@@ -34,6 +34,7 @@ public class TestController {
     public String getUser() {
         RpcResult<User> result = testService.select();
         System.out.println(result.getObj().getName());
+        System.out.println("test");
         return result.getObj().getHeadImgUrl();
     }
 

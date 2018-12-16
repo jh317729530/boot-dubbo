@@ -39,6 +39,7 @@ SpringBoot + Dubbo 的项目
 ### 运行步骤
 - 依次运行 ProviderApplication 和 ConsumerApplication 即可
 - 数据库什么的请随意
+- 打开浏览器访问 http://localhost:8081/sayHello?name=a 
 
 ----
 

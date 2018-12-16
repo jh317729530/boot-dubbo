@@ -1,8 +1,5 @@
 package com.wenyao.annontation;
 
-import org.aspectj.lang.annotation.Aspect;
-import org.springframework.stereotype.Component;
-
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
